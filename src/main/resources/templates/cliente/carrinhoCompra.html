@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{cliente/fragments/layout}">
+
+<head>
+
+	<title>Carrinho de Compra</title>
+
+</head>
+
+<body>
+
+	<!-- Page Content -->
+	<div class="container" layout:fragment="corpo">
+
+		<div class="row">
+
+			<div class="col-12">
+				<div class="table-responsive">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th scope="col"></th>
+								<th scope="col">Produto</th>
+								<th scope="col">Estoque</th>
+								<th scope="col" class="text-center">Quantidade</th>
+								<th scope="col" class="text-right">Valor Unitário</th>
+								<th scope="col" class="text-right">Valor Total</th>
+								<th scope="col" class="text-right">Ações</th>
+								
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="item : ${listaItens}">
+								<td> <img th:src="|/mostrarImagem/${item.produto.id}|"  width="40"/></td> 
+								<td th:text="${item.produto.descricao}"></td>								
+								<td>Em estoque</td>
+								<td class="text-center" th:text="${item.quantidade}"></td>
+
+								<td class="text-center" th:text="${item.valorUnitario}" data-mask="#.###,00" data-mask-reverse="true"></td>
+								
+								<td class="text-center" th:text="${item.valorTotal}" data-mask="#.###,00" data-mask-reverse="true"></td>
+								<td class="text-center">
+									
+									<a class="btn btn-sm btn-success"
+										th:href="@{/alterarQuantidade/{id}/{acao}(id=${item.produto.id},acao=${1})}"
+										role="button"><i class="fa fa-plus"></i></a>
+										<a
+										class="btn btn-sm btn-success"
+										th:href="@{/alterarQuantidade/{id}/{acao}(id=${item.produto.id},acao=${0})}"
+										role="button"><i class="fa fa-minus"></i>
+									</a>
+									<a class="btn btn-sm btn-danger"
+										th:href="@{/removerProduto/{id}(id=${item.produto.id})}" role="button"><i
+											class="fa fa-trash"></i>
+									</a>
+								</td>
+							</tr>
+
+							<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td>Sub-Total --></td>
+								<td class="text-right"><p>R$ &nbsp;<span th:text="${compra.valorTotal}" data-mask="#.###,00" data-mask-reverse="true"></span></p></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td>Frete --></td>
+								<td class="text-right">R$&nbsp;0,00</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td><strong>Total --></strong></td>
+								<td class="text-right"><strong><p>R$&nbsp;<span th:text="${compra.valorTotal}" data-mask="#.###,00" data-mask-reverse="true"></span></p></strong>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+			<div class="col mb-2">
+				<div class="row">
+					<div class="col-sm-12  col-md-6">
+						
+						<a class="btn btn-block btn-light text-uppercase" href="/"
+							role="button">Continue Comprando</a>
+						
+					</div>
+					<div class="col-sm-12 col-md-6 text-right">
+						<a class="btn btn-lg btn-block btn-success text-uppercase" th:href="finalizar"
+							role="button">Finalizar a Compra</a>
+
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+		<!-- /.row -->
+
+	</div>
+	<!-- /.container -->
+
+</body>
+
+</html>

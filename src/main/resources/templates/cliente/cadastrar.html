@@ -1,0 +1,149 @@
+<!DOCTYPE HTML>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{cliente/fragments/layout}">
+
+<head>
+
+	<title>Finalizar Compra</title>
+
+</head>
+
+<body>
+
+	<!-- Page Content -->
+	<div class="container" layout:fragment="corpo">
+
+		<div class="row">
+			<div class="col-6">
+				<h2>Efetue seu cadastro Em nossa Loja Virtual</h2>
+				<p>É continue sua compra!</p>
+			</div>
+			<div class="col-6">
+				<h2>Login</h2>
+				<p>Se você já possui uma conta, informe os dados de acesso.</p>
+			</div>
+
+			<div class="col-6">
+				<form action="/cliente/salvar" th:object="${cliente}" method="POST">
+					<div class="form-row">
+						<div class="form-group col-md-12">
+							<label for="nome">Nome do Cliente</label> <input type="text" class="form-control" id="nome"
+								placeholder="Nome Completo" autofocus="autofocus" th:field="*{nome}" value="" />
+							<div class="invalid-feedback"></div>
+						</div>
+
+						<div class="form-group col-md-6">
+							<label for="cpf">CPF</label> <input type="text" class="form-control" id="cpf"
+								placeholder="CPF" autofocus="autofocus" th:field="*{cpf}" value="" />
+							<div class="invalid-feedback"></div>
+						</div>
+
+						<div class="form-row">
+							<div class="form-group col-md-3">
+								<label for="telefone">Telefone</label> <input type="text" class="form-control"
+									id="telefone" data-mask-reverse="true" th:field="*{telefone}" />
+								<div class="invalid-feedback"></div>
+							</div>
+							<div class="form-group col-md-3">
+								<label for="cep">Cep</label> <input type="text" class="form-control" id="cep"
+									data-mask="00000-000" name="cep" th:field="*{cep}" />
+								<div class="invalid-feedback"></div>
+							</div>
+
+							<div class="form-group col-md-6">
+								<label for="logradouro">Logradouro</label> <input type="text" class="form-control"
+									id="logradouro" placeholder="logradouro sem número" name="logradouro"
+									th:field="*{logradouro}" />
+								<div class="invalid-feedback"></div>
+							</div>
+							<div class="form-group col-md-6">
+								<label for="complemento">Complemento</label>
+								<input type="text" class="form-control" id="complemento"
+									placeholder="fundos, casa, AP. 102, .." name="complemento"
+									th:field="*{complemento}" />
+								<div class="invalid-feedback"></div>
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-md-3">
+								<label for="numero">Número</label> <input type="text" class="form-control" id="numero"
+									name="numero" th:field="*{numero}" />
+								<div class="invalid-feedback"></div>
+							</div>
+
+						</div>
+						<div class="form-row">
+							<div class="form-group col-md-3">
+								<label for="bairro">Bairro</label>
+								<input type="text" class="form-control" id="bairro" name="bairro"
+									th:field="*{bairro}" />
+								<div class="invalid-feedback"></div>
+							</div>
+
+							<div class="form-group col-md-3">
+								<label for="cidade">Cidade</label>
+								<input id="cidade" name="cidade" th:field="*{cidade}" type="text" class="form-control">
+
+								<div class="invalid-feedback"></div>
+							</div>
+							<div class="form-group col-md-3">
+								<label for="uf">UF</label>
+								<input id="uf" name="uf" th:field="*{uf}" type="text" class="form-control">
+
+								<div class="invalid-feedback"></div>
+							</div>
+						</div>
+
+						<div class="form-group col-md-6">
+							<label for="email">Email</label> <input type="text" class="form-control" id="email"
+								placeholder="Email" autofocus="autofocus" th:field="*{email}" value="" />
+							<div class="invalid-feedback"></div>
+						</div>
+
+						<div class="form-group col-md-6">
+							<label for="senha">Senha</label> <input type="password" class="form-control" id="nome"
+								placeholder="Senha" autofocus="autofocus" th:field="*{senha}" value="" />
+							<div class="invalid-feedback"></div>
+						</div>
+
+					</div>
+
+					<input type="hidden" id="id" th:field="*{id}" value="" />
+					<button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+				</form>
+			</div>
+			<!-- login cliente  -->
+			<div class="col-6">
+				<form action="/cliente/finalizar/login" method="POST">
+					<div class="form-row">
+
+						<div class="form-group col-md-12">
+							<label>Email</label> <input type="text" name="username" class="form-control"
+								placeholder="Email" autofocus="autofocus" value="" />
+							<div class="invalid-feedback"></div>
+						</div>
+
+						<div class="form-group col-md-12">
+							<label>Senha</label> <input type="password" name="password" class="form-control"
+								placeholder="Senha" autofocus="autofocus" value="" />
+							<div class="invalid-feedback"></div>
+						</div>
+
+					</div>
+
+					<button type="submit" class="btn btn-primary btn-sm">Efetuar Login</button>
+				</form>
+			</div>
+
+
+		</div>
+		<!-- /.row -->
+
+	</div>
+	<!-- /.container -->
+
+
+
+
+</body>
+
+</html>
